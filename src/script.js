@@ -1,3 +1,23 @@
+let selectCity=document.querySelector("#selectCity");
+
+selectCity.addEventListener('click',(e)=>{
+    let cityTimeZone=e.target.value;
+    let cityName=cityTimeZone.replace("_"," ").split('/')[1];
+    let cityTz=moment.tz("cityTimeZone");
+    console.log(cityTz);
+    let cityDate=cityTz.format("MMMM Do, YYYY");
+    let cityTime=cityTz.format("h:mm:ss [<small>]A[</small>]");
+    let city=document.querySelector("#cities");
+    city.innerHTML=`
+      <div class="city" id="lossAngeles">
+            <div class="box">
+                <div class="cityName">${cityName}</div>
+                <div class="date">${cityDate}</div>
+            </div>
+            <div class="time">${cityTime}</div>
+        </div>
+    `;
+});
 // loss angeles
 let lossAngeles=document.querySelector("#lossAngeles");
 let lossAngelsdate=lossAngeles.querySelector(".date");
